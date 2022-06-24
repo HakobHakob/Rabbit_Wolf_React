@@ -1,0 +1,43 @@
+.App {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+}
+.emptyCells{
+  display: inline-block;
+  background-color: #31B5E7;
+  margin: 1px;
+  
+  width: 60px;
+  height: 60px;
+  opacity: 0.7;
+  
+}
+
+.AddNewBoardBtn,.startBtn{
+    font-size: 15px;
+    text-align: center;
+    background-color: #F07427;
+    border-radius: 15px;
+    border: none;
+    color: #FDF5E6;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    outline: none;
+}
+
+
+.select {
+  border-radius: 10px;
+  border: none;
+  float: right;
+  background-color: lightgreen;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+}
+
+
