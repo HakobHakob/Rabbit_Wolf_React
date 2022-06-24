@@ -18,7 +18,7 @@ function App() {
     <div className='App'>
         <CreateNewBoard text = "New Board" onClick = {addComponent}/> 
         {component.map((item,i)=>{return <div key ={i}>{item}</div>})}
-        {/* <GameGrid/> */}
+        <GameGrid/>
     </div>
   )
    
