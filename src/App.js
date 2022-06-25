@@ -6,9 +6,7 @@ import { CreateNewBoard } from "./NewGameBoardBtn";
 
 function App() {  
   
-  let select = <CustomSelect />
-
- 
+  let select = <CustomSelect /> 
 
   const [component, setComponent]  = useState([])
 

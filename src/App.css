@@ -1,8 +1,15 @@
-.App {
+.App{
  display: flex;
  flex-direction: column;
  justify-content: center;
  align-items: center;
+}
+
+.board{
+  background-color: #F197FF;
+  padding: 10px;
+  border-radius: 20px;
+  
 }
 .emptyCells{
   display: inline-block;

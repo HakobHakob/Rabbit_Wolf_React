@@ -25,9 +25,9 @@ function CustomSelect(props) {
     setGamePlaceArr(CreateGameArray(parseInt(value)))
   }
 
-  console.log(gamePlaceArr)
+
   return (
-    <div>
+    <div className='board'>
       
       <StartBtn onClick={handleClick} />     
       

@@ -3,8 +3,14 @@ import { Square } from './GameBoard'
 
 function GameGrid(props) {
   return (
-    <div>
-      {props.array.map((row) => row.map((column) => <Square>{column}</Square>))}
+    <div className="board">
+      {props.array.map((row) => (
+        <div>
+          {row.map((column) => (
+            <Square>{column}</Square>
+          ))}
+        </div>
+      ))}
     </div>
   )
 }
