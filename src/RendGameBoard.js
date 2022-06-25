@@ -1,24 +1,10 @@
 import React from 'react'
-import { GameBoard } from './GameBoard'
+import { Square } from './GameBoard'
 
 function GameGrid(props) {
-
-  const FREE_CELL = 0
-  const gameBoard = new Array(props)
-
   return (
     <div>
-      
-     
-      {gameBoard.fill(FREE_CELL).map(() => {
-        return (
-          <div key ={Math.random()}>
-            {gameBoard.map(() => (
-              <GameBoard />
-            ))}
-          </div>
-        )
-      })}
+      {props.array.map((row) => row.map((column) => <Square>{column}</Square>))}
     </div>
   )
 }

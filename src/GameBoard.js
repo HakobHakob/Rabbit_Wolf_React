@@ -1,10 +1,10 @@
 import React from 'react'
 import './App.css'
 
-const GameBoard = () => {
+const Square = () => {
   return (    
        <div className="emptyCells"></div>          
   )
 }
 
-export { GameBoard }
+export { Square }
