@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { CustomSelect } from "./CustomSelect";
-import { GameBoard } from "./GameBoard";
 import { CreateNewBoard } from "./NewGameBoardBtn";
 
 
