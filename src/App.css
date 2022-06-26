@@ -1,41 +1,74 @@
-.App{
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.board{
-  background-color: #F197FF;
+.board {
+  background-color: #f197ff;
   padding: 10px;
   border-radius: 20px;
   margin: 10px;
-  
 }
-.emptyCells{
-  display: inline-block;
-  background-color: #31B5E7;
-  margin: 1px;
+
+.optionsDiv {
   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.arrowsDiv{
+  margin:  0 auto;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftAndRightDiv{
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.arrowsDiv button{
+  cursor: pointer;
+  margin:  5px auto;
+  padding: 3px 13px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+
+}
+.leftAndRightDiv button{
+  padding:  5px auto;
+}
+
+.emptyCells {
+  display: inline-block;
+  background-color: #31b5e7;
+  margin: 1px;
+
   width: 60px;
   height: 60px;
   opacity: 0.7;
-  
 }
 
-.AddNewBoardBtn,.startBtn{
-    font-size: 15px;
-    text-align: center;
-    background-color: #F07427;
-    border-radius: 15px;
-    border: none;
-    color: #FDF5E6;
-    cursor: pointer;
-    padding: 10px;
-    margin: 10px;
-    outline: none;
+.AddNewBoardBtn,
+.startBtn {
+  font-size: 15px;
+  text-align: center;
+  background-color: #f07427;
+  border-radius: 15px;
+  border: none;
+  color: #fdf5e6;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+  outline: none;
 }
-
 
 .select {
   border-radius: 10px;
@@ -47,5 +80,3 @@
   padding: 10px;
   margin: 10px;
 }
-
-

@@ -1,10 +1,10 @@
 import React from 'react'
 
     const characterDatas = {
-    rabbit: { name: 'nap', src: 'img/nap.png', count: 1 },
-    wolf: { name: 'gel', src: 'img/wolf.png' },
-    home: { name: 'home', src: 'img/home.png', count: 1 },
-    fence: { name: 'fence', src: 'img/fence.png' },
+    rabbit: { name: 'r', src: 'img/nap.png', count: 1 },
+    wolf: { name: 'w', src: 'img/wolf.png' },
+    home: { name: 'h', src: 'img/home.png', count: 1 },
+    fence: { name: 'f', src: 'img/fence.png' },
   }
   const RABBIT = characterDatas.rabbit.name
   const WOLF = characterDatas.wolf.name
