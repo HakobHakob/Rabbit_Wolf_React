@@ -46,6 +46,9 @@ import React from 'react'
     setCharacters(gameGrid, FENCE, fenceCount)
     setCharacters(gameGrid, RABBIT, 1)
     setCharacters(gameGrid, HOME, 1)
+
+
+
 return gameGrid
   }
 

@@ -1,19 +1,18 @@
 import React from 'react'
-import { Square } from './GameBoard'
+import { Square } from './Square'
 
-
-
-function GameGrid(props) {
+function GameBoard({array}) {
+ 
   return (
     <div className="board" >
-      {props.array.map((row,i) => (
+      {array.map((row,i) => (
         <div key={i}>
-          {row.map((column) => (
-            <Square>{column}</Square>
+          {row.map((column,i) => (
+            <Square key={i}>{column}</Square>
           ))}
         </div>
       ))}
     </div>
   )
 }
-export { GameGrid }
+export { GameBoard }

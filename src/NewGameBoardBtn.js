@@ -1,10 +1,9 @@
 import React from "react";
 
-const CreateNewBoard = (props) =>{
-
+const CreateNewBoard = ({onClick,text}) =>{
 
 return (
-    <button className="AddNewBoardBtn" onClick ={props.onClick}> {props.text}</button>
+    <button className="AddNewBoardBtn" onClick ={onClick}> {text}</button>
 )
 
 }
