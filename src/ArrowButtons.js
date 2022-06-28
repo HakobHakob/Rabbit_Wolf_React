@@ -1,18 +1,14 @@
-import React from "react";
+import React from 'react'
 
-const  ArrowButtons = () =>{
+const ArrowButtons = ({onClick }) => {
 
-    return(
-        <div className="arrowsDiv">
-            <button className="upBtn">&uArr;</button>
-            <div className="leftAndRightDiv">
-                <button className="leftBtn">&lArr;</button>
-                <button className="rightBtn">&rArr;</button>
-            </div>
-            <button className="downBtn">&dArr;</button>
-        </div>
 
-    )
+
+  return (
+      <button className="upBtn" onClick={onClick}>
+        &#43;
+      </button>
+  )
 }
 
-export {ArrowButtons}
+export { ArrowButtons }

@@ -13,13 +13,12 @@
 }
 
 .optionsDiv {
-  
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.arrowsDiv{
-  margin:  0 auto;
+.arrowsDiv {
+  margin: 0 auto;
   padding: 0 15px;
   display: flex;
   flex-direction: column;
@@ -27,30 +26,29 @@
   align-items: center;
 }
 
-.leftAndRightDiv{
+.leftAndRightDiv {
   width: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.arrowsDiv button{
+.arrowsDiv button {
   cursor: pointer;
-  margin:  5px auto;
+  margin: 5px auto;
   padding: 3px 13px;
   outline: none;
   border: none;
   border-radius: 10px;
-
 }
-.leftAndRightDiv button{
-  padding:  5px auto;
+.leftAndRightDiv button {
+  padding: 5px auto;
 }
 
 .emptyCells {
   display: inline-block;
   background-color: #31b5e7;
   margin: 1px;
-
+  border: 1px solid black;
   width: 60px;
   height: 60px;
   opacity: 0.7;

@@ -1,28 +1,24 @@
-import { useState } from "react";
+import React from "react";
+import {useState} from "react";
 import { GameArea } from "./GameArea";
 import { CreateNewBoard } from "./NewGameBoardBtn";
 
-
+let count = 0
 function App() {  
-  
-  let select = <GameArea /> 
 
   const [component, setComponent]  = useState([])
 
-
     function addComponent(){
-      
-      setComponent([...component, select])
+      setComponent([...component, count+1])
+      count++
     }
 
-  return (
-    <div className='App'>
-        <CreateNewBoard text = "New Board" onClick = {addComponent}/> 
-
-        {component.map((item,i)=>{return <div key ={i}>{item}</div>})}
-       
-    </div>
-  )
+return (
+  <div className={"App"}>
+    <CreateNewBoard onClick = {addComponent} text = {"Create board"} />
+    {component.map((item)=>{return <GameArea key = {item}/>})}
+  </div>
+)
    
 }
 export default App
