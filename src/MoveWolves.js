@@ -112,7 +112,7 @@ function getWolvesCoordinatesAndMove(gamePlaceArr) {
 }
 //   }
 
-function MoveWolves(gamePlaceArr) {
+const MoveWolves = (gamePlaceArr) => {
   return getWolvesCoordinatesAndMove(gamePlaceArr)
 }
 

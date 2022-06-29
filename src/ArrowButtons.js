@@ -1,13 +1,10 @@
 import React from 'react'
 
-const ArrowButtons = ({onClick }) => {
-
-
-
+const ArrowButtons = ({ onClick }) => {
   return (
-      <button className="upBtn" onClick={onClick}>
-        &#43;
-      </button>
+    <button className="upBtn" onClick={onClick}>
+      &#43;
+    </button>
   )
 }
 

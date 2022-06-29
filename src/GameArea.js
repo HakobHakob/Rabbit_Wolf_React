@@ -20,7 +20,7 @@ const directions = {
   LEFT: 3,
 }
 
-function GameArea(props) {
+const  GameArea = () => {
   const [value, setValue] = useState(5)
 
   const [gamePlaceArr, setGamePlaceArr] = useState([])

@@ -41,7 +41,7 @@ function createEmptyMass(gameBoardSize) {
   return gameBoard
 }
 
-function CreateGameArray(gameBoardSize) {
+const  CreateGameArray = (gameBoardSize) => {
   const gameGrid = createEmptyMass(gameBoardSize)
   const wolfCount = Math.ceil((60 * gameBoardSize) / 100)
   const fenceCount = Math.ceil((40 * gameBoardSize) / 100)
@@ -51,7 +51,7 @@ function CreateGameArray(gameBoardSize) {
   setCharacters(gameGrid, HOME, 1)
 
  
-  console.log(gameGrid,'gameGrid')
+ 
   return gameGrid
 }
 

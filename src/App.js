@@ -9,12 +9,12 @@ function App() {
   const [component, setComponent]  = useState([])
 
     function addComponent(){
-      setComponent([...component, count+1])
+      setComponent([...component, count + 1])
       count++
     }
 
 return (
-  <div className={"App"}>
+  <div className="App">
     <CreateNewBoard onClick = {addComponent} text = {"Create board"} />
     {component.map((item)=>{return <GameArea key = {item}/>})}
   </div>

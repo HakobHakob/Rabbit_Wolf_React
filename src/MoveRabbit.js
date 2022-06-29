@@ -101,7 +101,7 @@ function setRabbitInNewCell(gamePlaceArr, arrow) {
 }
 //   }
 
-function RabbitMove(gameStat, rabbitDirection) {
+const RabbitMove = (gameStat, rabbitDirection) => {
   return setRabbitInNewCell(gameStat, rabbitDirection)
 }
 export { RabbitMove }
