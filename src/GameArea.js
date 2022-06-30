@@ -5,14 +5,15 @@ import { CreateGameArray } from './CreateEmptyMass'
 import { CustomSelect } from './CustomSelect'
 import { GameBoard } from './RendGameBoard'
 import { StartBtn } from './StartBtn'
-import { RabbitMove } from './MoveRabbit'
-import { MoveWolves } from './MoveWolves'
+import { ShowMessage } from './ShowMessage'
+import { MoveCharacters } from './MoveCharacters'
 
 const options = [
   { id: '5', value: 5, label: '5 x 5' },
   { id: '7', value: 7, label: '7 x 7' },
   { id: '10', value: 10, label: '10 x 10' },
 ]
+
 const directions = {
   UP: 0,
   DOWN: 1,
@@ -20,23 +21,33 @@ const directions = {
   LEFT: 3,
 }
 
-const  GameArea = () => {
+const GameArea = () => {
   const [value, setValue] = useState(5)
 
-  const [gamePlaceArr, setGamePlaceArr] = useState([])
+  const [gamePlaceArr, setGamePlaceArr] = useState({
+    gamePlaceArr: [],
+    isGameOver: false,
+    gameResult: '',
+  })
 
   const handleChange = (event) => {
     setValue(event.target.value)
   }
 
   const handleClick = () => {
-    setGamePlaceArr(CreateGameArray(parseInt(value)))
+    setGamePlaceArr({
+      gamePlaceArr: CreateGameArray(parseInt(value)),
+      isGameOver: false,
+      gameResult: '',
+    })
   }
 
   const handleInput = (directions) => {
-    setGamePlaceArr([...RabbitMove(gamePlaceArr, directions)])
-
-    MoveWolves(gamePlaceArr)
+    if (gamePlaceArr.isGameOver === true) {
+      return
+    }
+    const charactersStep = MoveCharacters(gamePlaceArr, directions)
+    setGamePlaceArr(charactersStep)
   }
 
   return (
@@ -72,8 +83,13 @@ const  GameArea = () => {
 
         <CustomSelect options={options} onChange={handleChange} />
       </div>
-
-      <div className="gameBoardDiv">{<GameBoard array={gamePlaceArr} />}</div>
+      {gamePlaceArr.isGameOver === true ? (
+        <ShowMessage message={gamePlaceArr.gameResult} />
+      ) : (
+        <div className="gameBoardDiv">
+          {<GameBoard array={gamePlaceArr.gamePlaceArr} />}
+        </div>
+      )}
     </div>
   )
 }

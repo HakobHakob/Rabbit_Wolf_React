@@ -1,10 +1,8 @@
-
-
 const characterDatas = {
-  rabbit: { name: 'r', src: 'img/nap.png', count: 1 },
-  wolf: { name: 'w', src: 'img/wolf.png' },
-  home: { name: 'h', src: 'img/home.png', count: 1 },
-  fence: { name: 'f', src: 'img/fence.png' },
+  rabbit: { name: 'r', count: 1 },
+  wolf: { name: 'w' },
+  home: { name: 'h', count: 1 },
+  fence: { name: 'f' },
 }
 const RABBIT = characterDatas.rabbit.name
 const WOLF = characterDatas.wolf.name
@@ -41,7 +39,7 @@ function createEmptyMass(gameBoardSize) {
   return gameBoard
 }
 
-const  CreateGameArray = (gameBoardSize) => {
+const CreateGameArray = (gameBoardSize) => {
   const gameGrid = createEmptyMass(gameBoardSize)
   const wolfCount = Math.ceil((60 * gameBoardSize) / 100)
   const fenceCount = Math.ceil((40 * gameBoardSize) / 100)
@@ -50,11 +48,7 @@ const  CreateGameArray = (gameBoardSize) => {
   setCharacters(gameGrid, RABBIT, 1)
   setCharacters(gameGrid, HOME, 1)
 
- 
- 
   return gameGrid
 }
-
-
 
 export { CreateGameArray }

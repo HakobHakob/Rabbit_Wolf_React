@@ -1,8 +1,8 @@
 const characterDatas = {
-  rabbit: { name: 'r', src: 'img/nap.png', count: 1 },
-  wolf: { name: 'w', src: 'img/wolf.png' },
-  home: { name: 'h', src: 'img/home.png', count: 1 },
-  fence: { name: 'f', src: 'img/fence.png' },
+  rabbit: { name: 'r', count: 1 },
+  wolf: { name: 'w' },
+  home: { name: 'h', count: 1 },
+  fence: { name: 'f' },
 }
 
 const RABBIT = characterDatas.rabbit.name
@@ -46,11 +46,12 @@ function arrangeNewCoordinates(gamePlaceArr, newCoordsData) {
 }
 
 function setRabbitInNewCoordinates(
-  gamePlaceArr,
+  gameStatObject,
   rabbitNewCoordinates,
   rabbitCord,
   arrow
 ) {
+  const gamePlaceArr = gameStatObject.gamePlaceArr
   const [x, y] = rabbitCord
   const [newX, newY] = rabbitNewCoordinates[arrow]
 
@@ -58,29 +59,26 @@ function setRabbitInNewCoordinates(
     case FREE_CELL:
       gamePlaceArr[newX][newY] = RABBIT
       gamePlaceArr[x][y] = FREE_CELL
-      break
+      return gameStatObject
 
     case HOME:
       gamePlaceArr[x][y] = FREE_CELL
-      //   gameStat.gameResult = 'win'
-      // showGameMessages(gameStat)
-      break
+      gameStatObject.gameResult = 'You win!'
+      gameStatObject.isGameOver = true
+      return gameStatObject
 
     case FENCE:
-      return
+      return gameStatObject
 
     case WOLF:
-      //   gameStat.gameResult = 'over'
-      // showGameMessages(gameStat)
-      break
+      gameStatObject.gameResult = 'Game Over!'
+      gameStatObject.isGameOver = true
+      return gameStatObject
   }
-  return gamePlaceArr
 }
 
-function setRabbitInNewCell(gamePlaceArr, arrow) {
-  // if (gameStat.isGameOver === true) {
-  //   return
-  // } else {
+function setRabbitInNewCell(gameStatObject, arrow) {
+  const gamePlaceArr = gameStatObject.gamePlaceArr
 
   const rabbitCord = findCordOfCharacter(gamePlaceArr, RABBIT)[0]
 
@@ -92,16 +90,18 @@ function setRabbitInNewCell(gamePlaceArr, arrow) {
   )
 
   const rabbitInNewCoordinates = setRabbitInNewCoordinates(
-    gamePlaceArr,
+    gameStatObject,
     rabbitNewCoordinates,
     rabbitCord,
     arrow
   )
   return rabbitInNewCoordinates
 }
-//   }
 
 const RabbitMove = (gameStat, rabbitDirection) => {
-  return setRabbitInNewCell(gameStat, rabbitDirection)
+  let gameStatObject = { ...gameStat }
+
+  return setRabbitInNewCell(gameStatObject, rabbitDirection)
 }
+
 export { RabbitMove }

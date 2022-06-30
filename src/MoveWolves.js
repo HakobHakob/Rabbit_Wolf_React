@@ -5,8 +5,6 @@ const characterDatas = {
   fence: { name: 'f', src: '../img/fence.png' },
 }
 
-
-
 const RABBIT = characterDatas.rabbit.name
 const WOLF = characterDatas.wolf.name
 const FREE_CELL = 0
@@ -40,32 +38,37 @@ function conditionXandYinGamePlace(gamePlaceArr, [x, y]) {
   return x >= 0 && x < gamePlaceArr.length && y >= 0 && y < gamePlaceArr.length
 }
 
-function findEmptyCellsAroundWolf(gamePlaceArr, cords) {
-  //   const rabbitFound = cellCharacter(gamePlaceArr, cords, RABBIT)
+function findEmptyCellsAroundWolf(gameStatObject, cords) {
+  const gamePlaceArr = gameStatObject.gamePlaceArr
 
-  //   if (rabbitFound.length > 0) {
-  //     gameStat.wolvesIntervalStatus = true
-  //     gameStat.gameResult = 'over'
-  //     showGameMessages(gameStat)
-  //   } else {
-  return cellCharacter(gamePlaceArr, cords, FREE_CELL)
+  const rabbitFound = cellCharacter(gamePlaceArr, cords, RABBIT)
+
+  if (rabbitFound.length > 0) {
+    gameStatObject.isGameOver = true
+    gameStatObject.gameResult = 'Game over!'
+    return gameStatObject
+  } else {
+    return cellCharacter(gamePlaceArr, cords, FREE_CELL)
+  }
 }
-// }
+
 function cellCharacter(gamePlaceArr, cells, character) {
   return cells.filter(([x, y]) => gamePlaceArr[x][y] === character)
 }
 
-function shortestDistanceBox(emtyCellsAroundWolves, gamePlaceArr) {
-  //   if (gameStat.isGameOver === true) {
-  //     return
-  //   } else {
-  const distanceArray = getDistances(emtyCellsAroundWolves, gamePlaceArr)
-  const minOfDistances = Math.min(...distanceArray)
-  const index = distanceArray.indexOf(minOfDistances)
+function shortestDistanceBox(emtyCellsAroundWolves, gameStatObject) {
+  const gamePlaceArr = gameStatObject.gamePlaceArr
 
-  return emtyCellsAroundWolves[index]
+  if (gameStatObject.isGameOver === true) {
+    return gameStatObject
+  } else {
+    const distanceArray = getDistances(emtyCellsAroundWolves, gamePlaceArr)
+    const minOfDistances = Math.min(...distanceArray)
+    const index = distanceArray.indexOf(minOfDistances)
+
+    return emtyCellsAroundWolves[index]
+  }
 }
-// }
 
 function getDistances(emtyCellsAroundWolves, gamePlaceArr) {
   const rabbitCord = findCordOfCharacter(gamePlaceArr, RABBIT)
@@ -80,40 +83,46 @@ function calculateDistanceFromRabbit([x1, y1], [[x2, y2]]) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2))
 }
 
-function moveWolves(gamePlaceArr, wolvesCord, minDistanceData) {
-  //   if (gameStat.isGameOver === true) {
-  //     return
-  //   } else {
+function moveWolves(gameStatObject, wolvesCord, minDistanceData) {
+  const gamePlaceArr = gameStatObject.gamePlaceArr
+
+  if (gameStatObject.isGameOver === true) {
+    return gameStatObject
+  }
 
   const [q, k] = wolvesCord
   const [a, b] = minDistanceData
 
   gamePlaceArr[a][b] = WOLF
   gamePlaceArr[q][k] = FREE_CELL
+  return gameStatObject
 }
-// }
 
-function getWolvesCoordinatesAndMove(gamePlaceArr) {
-  // if (gameStat.isGameOver === true) {
-  //   showGameMessages(gameStat)
-  //   return
-  // } else {
-  const wolvesCoordinates = findCordOfCharacter(gamePlaceArr, WOLF)
+function getWolvesCoordinatesAndMove(gameStatObject) {
+  if (gameStatObject.isGameOver === true) {
+    return gameStatObject
+  } else {
+    const gamePlaceArr = gameStatObject.gamePlaceArr
 
-  wolvesCoordinates.forEach((wolf) => {
-    const cells = findCellsArroundWolves(gamePlaceArr, wolf)
+    const wolvesCoordinates = findCordOfCharacter(gamePlaceArr, WOLF)
 
-    const emtyCells = findEmptyCellsAroundWolf(gamePlaceArr, cells)
+    let finalState
+    wolvesCoordinates.forEach((wolf) => {
+      const cells = findCellsArroundWolves(gamePlaceArr, wolf)
 
-    const shortDistance = shortestDistanceBox(emtyCells, gamePlaceArr)
+      const emtyCells = findEmptyCellsAroundWolf(gameStatObject, cells)
 
-    moveWolves(gamePlaceArr, wolf, shortDistance)
-  })
+      const shortDistance = shortestDistanceBox(emtyCells, gameStatObject)
+
+      finalState = moveWolves(gameStatObject, wolf, shortDistance)
+    })
+    return finalState
+  }
 }
-//   }
 
-const MoveWolves = (gamePlaceArr) => {
-  return getWolvesCoordinatesAndMove(gamePlaceArr)
+const MoveWolves = (gameStat) => {
+  const gameStatObject = { ...gameStat }
+  return getWolvesCoordinatesAndMove(gameStatObject)
 }
 
 export { MoveWolves }
