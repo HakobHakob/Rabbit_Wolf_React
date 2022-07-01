@@ -98,7 +98,10 @@ function setRabbitInNewCell(gameStatObject, arrow) {
   return rabbitInNewCoordinates
 }
 
+
+
 const RabbitMove = (gameStat, rabbitDirection) => {
+  
   let gameStatObject = { ...gameStat }
 
   return setRabbitInNewCell(gameStatObject, rabbitDirection)

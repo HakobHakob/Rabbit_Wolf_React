@@ -3,20 +3,20 @@ import {useState} from "react";
 import { GameArea } from "./GameArea";
 import { CreateNewBoard } from "./NewGameBoardBtn";
 
-let count = 0
+
 function App() {  
 
-  const [component, setComponent]  = useState([])
+  const [gameBoardNumber, setGameBoardNumber]  = useState([])
 
     function addComponent(){
-      setComponent([...component, count + 1])
-      count++
+      setGameBoardNumber([...gameBoardNumber, gameBoardNumber.length + 1])
+     
     }
 
 return (
   <div className="App">
     <CreateNewBoard onClick = {addComponent} text = {"Create board"} />
-    {component.map((item)=>{return <GameArea key = {item}/>})}
+    {gameBoardNumber.map((item)=>{return <GameArea key = {item}/>})}
   </div>
 )
    

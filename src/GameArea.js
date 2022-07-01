@@ -9,9 +9,9 @@ import { ShowMessage } from './ShowMessage'
 import { MoveCharacters } from './MoveCharacters'
 
 const options = [
-  { id: '5', value: 5, label: '5 x 5' },
-  { id: '7', value: 7, label: '7 x 7' },
-  { id: '10', value: 10, label: '10 x 10' },
+  { value: 5, label: '5 x 5' },
+  { value: 7, label: '7 x 7' },
+  { value: 10, label: '10 x 10' },
 ]
 
 const directions = {
@@ -24,7 +24,7 @@ const directions = {
 const GameArea = () => {
   const [value, setValue] = useState(5)
 
-  const [gamePlaceArr, setGamePlaceArr] = useState({
+  const [gameStat, setGamePlaceArr] = useState({
     gamePlaceArr: [],
     isGameOver: false,
     gameResult: '',
@@ -43,10 +43,12 @@ const GameArea = () => {
   }
 
   const handleInput = (directions) => {
-    if (gamePlaceArr.isGameOver === true) {
+    if (gameStat.isGameOver === true) {
       return
     }
-    const charactersStep = MoveCharacters(gamePlaceArr, directions)
+
+    const charactersStep = MoveCharacters(gameStat, directions)
+
     setGamePlaceArr(charactersStep)
   }
 
@@ -83,11 +85,11 @@ const GameArea = () => {
 
         <CustomSelect options={options} onChange={handleChange} />
       </div>
-      {gamePlaceArr.isGameOver === true ? (
-        <ShowMessage message={gamePlaceArr.gameResult} />
+      {gameStat.isGameOver === true ? (
+        <ShowMessage message={gameStat.gameResult} />
       ) : (
         <div className="gameBoardDiv">
-          {<GameBoard array={gamePlaceArr.gamePlaceArr} />}
+          {<GameBoard array={gameStat.gamePlaceArr} />}
         </div>
       )}
     </div>

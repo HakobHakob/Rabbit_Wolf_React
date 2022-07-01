@@ -2,9 +2,7 @@ import { RabbitMove } from './MoveRabbit'
 import { MoveWolves } from './MoveWolves'
 
 const MoveCharacters = (gameObject, directions) => {
-  const some = RabbitMove(gameObject, directions)
-
-  return MoveWolves(some)
+  return MoveWolves(RabbitMove(gameObject, directions))
 }
 
 export { MoveCharacters }
