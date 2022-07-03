@@ -20,76 +20,81 @@ const directions = {
   RIGHT: 2,
   LEFT: 3,
 }
+const GAMEBOARD_DEFAULT_SIZE = 5
 
 const GameArea = () => {
-  const [value, setValue] = useState(5)
+  const [boardSize, setBoardSize] = useState(GAMEBOARD_DEFAULT_SIZE)
 
-  const [gameStat, setGamePlaceArr] = useState({
-    gamePlaceArr: [],
+  const [gameStat, setGameStat] = useState({
+    gameGrid: [],
     isGameOver: false,
     gameResult: '',
   })
 
-  const handleChange = (event) => {
-    setValue(event.target.value)
+  const changeSelectValue = (e) => {
+    setBoardSize(+e.target.value)
   }
 
-  const handleClick = () => {
-    setGamePlaceArr({
-      gamePlaceArr: CreateGameArray(parseInt(value)),
+  const [isActiveButtons, setIsActiveButtons] = useState(false)
+
+  const gameStartClick = () => {
+    setGameStat({
+      gameGrid: CreateGameArray(boardSize),
       isGameOver: false,
       gameResult: '',
     })
+    setIsActiveButtons(true)
   }
 
-  const handleInput = (directions) => {
+  const setRabbitDirections = (directions) => {
     if (gameStat.isGameOver === true) {
       return
     }
-
-    const charactersStep = MoveCharacters(gameStat, directions)
-
-    setGamePlaceArr(charactersStep)
+    const charactersMovement = MoveCharacters(gameStat, directions)
+    setGameStat(charactersMovement)
   }
 
   return (
     <div className="board">
       <div className="optionsDiv">
-        <StartBtn onClick={handleClick} />
+        <StartBtn onClick={gameStartClick} />
 
-        <div className="arrowsDiv">
-          <ArrowButtons
-            onClick={() => {
-              handleInput(directions.UP)
-            }}
-          />
-
-          <div className="leftAndRightDiv">
+        {isActiveButtons ? (
+          <div className="arrowsDiv">
             <ArrowButtons
               onClick={() => {
-                handleInput(directions.LEFT)
+                setRabbitDirections(directions.UP)
               }}
             />
+
+            <div className="leftAndRightDiv">
+              <ArrowButtons
+                onClick={() => {
+                  setRabbitDirections(directions.LEFT)
+                }}
+              />
+              <ArrowButtons
+                onClick={() => {
+                  setRabbitDirections(directions.RIGHT)
+                }}
+              />
+            </div>
             <ArrowButtons
               onClick={() => {
-                handleInput(directions.RIGHT)
+                setRabbitDirections(directions.DOWN)
               }}
             />
           </div>
-          <ArrowButtons
-            onClick={() => {
-              handleInput(directions.DOWN)
-            }}
-          />
-        </div>
+        ) : null}
 
-        <CustomSelect options={options} onChange={handleChange} />
+        <CustomSelect options={options} onChange={changeSelectValue} />
       </div>
+
       {gameStat.isGameOver === true ? (
         <ShowMessage message={gameStat.gameResult} />
       ) : (
         <div className="gameBoardDiv">
-          {<GameBoard array={gameStat.gamePlaceArr} />}
+          {<GameBoard array={gameStat.gameGrid} />}
         </div>
       )}
     </div>

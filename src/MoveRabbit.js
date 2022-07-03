@@ -51,7 +51,7 @@ function setRabbitInNewCoordinates(
   rabbitCord,
   arrow
 ) {
-  const gamePlaceArr = gameStatObject.gamePlaceArr
+  const gamePlaceArr = gameStatObject.gameGrid
   const [x, y] = rabbitCord
   const [newX, newY] = rabbitNewCoordinates[arrow]
 
@@ -78,7 +78,8 @@ function setRabbitInNewCoordinates(
 }
 
 function setRabbitInNewCell(gameStatObject, arrow) {
-  const gamePlaceArr = gameStatObject.gamePlaceArr
+  const gamePlaceArr = gameStatObject.gameGrid
+ 
 
   const rabbitCord = findCordOfCharacter(gamePlaceArr, RABBIT)[0]
 

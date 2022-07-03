@@ -39,7 +39,7 @@ function conditionXandYinGamePlace(gamePlaceArr, [x, y]) {
 }
 
 function findEmptyCellsAroundWolf(gameStatObject, cords) {
-  const gamePlaceArr = gameStatObject.gamePlaceArr
+  const gamePlaceArr = gameStatObject.gameGrid
 
   const rabbitFound = cellCharacter(gamePlaceArr, cords, RABBIT)
 
@@ -57,7 +57,7 @@ function cellCharacter(gamePlaceArr, cells, character) {
 }
 
 function shortestDistanceBox(emtyCellsAroundWolves, gameStatObject) {
-  const gamePlaceArr = gameStatObject.gamePlaceArr
+  const gamePlaceArr = gameStatObject.gameGrid
 
   if (gameStatObject.isGameOver === true) {
     return gameStatObject
@@ -84,7 +84,7 @@ function calculateDistanceFromRabbit([x1, y1], [[x2, y2]]) {
 }
 
 function moveWolves(gameStatObject, wolvesCord, minDistanceData) {
-  const gamePlaceArr = gameStatObject.gamePlaceArr
+  const gamePlaceArr = gameStatObject.gameGrid
 
   if (gameStatObject.isGameOver === true) {
     return gameStatObject
@@ -102,7 +102,7 @@ function getWolvesCoordinatesAndMove(gameStatObject) {
   if (gameStatObject.isGameOver === true) {
     return gameStatObject
   } else {
-    const gamePlaceArr = gameStatObject.gamePlaceArr
+    const gamePlaceArr = gameStatObject.gameGrid
 
     const wolvesCoordinates = findCordOfCharacter(gamePlaceArr, WOLF)
 

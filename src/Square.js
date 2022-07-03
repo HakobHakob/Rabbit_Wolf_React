@@ -8,18 +8,18 @@ const Square = (props) => {
     home: { name: 'h', src: '../img/home.png', count: 1 },
     fence: { name: 'f', src: '../img/fence.png' },
   }
-  const box = props.img
+  const characterImg = props.img
 
-  if (box === characterDatas.rabbit.name) {
+  if (characterImg === characterDatas.rabbit.name) {
     return <img src={characterDatas.rabbit.src} alt="Rabbit" />
   }
-  if (box === characterDatas.wolf.name) {
+  if (characterImg === characterDatas.wolf.name) {
     return <img src={characterDatas.wolf.src} alt="Wolf" />
   }
-  if (box === characterDatas.fence.name) {
+  if (characterImg === characterDatas.fence.name) {
     return <img src={characterDatas.fence.src} alt="Fence" />
   }
-  if (box === characterDatas.home.name) {
+  if (characterImg === characterDatas.home.name) {
     return <img src={characterDatas.home.src} alt="Home" />
   }
 

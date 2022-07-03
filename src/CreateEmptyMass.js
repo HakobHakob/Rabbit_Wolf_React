@@ -40,15 +40,16 @@ function createEmptyMass(gameBoardSize) {
 }
 
 const CreateGameArray = (gameBoardSize) => {
-  const gameGrid = createEmptyMass(gameBoardSize)
+
+  const gameMatrix = createEmptyMass(gameBoardSize)
   const wolfCount = Math.ceil((60 * gameBoardSize) / 100)
   const fenceCount = Math.ceil((40 * gameBoardSize) / 100)
-  setCharacters(gameGrid, WOLF, wolfCount)
-  setCharacters(gameGrid, FENCE, fenceCount)
-  setCharacters(gameGrid, RABBIT, 1)
-  setCharacters(gameGrid, HOME, 1)
+  setCharacters(gameMatrix, WOLF, wolfCount)
+  setCharacters(gameMatrix, FENCE, fenceCount)
+  setCharacters(gameMatrix, RABBIT, 1)
+  setCharacters(gameMatrix, HOME, 1)
 
-  return gameGrid
+  return gameMatrix
 }
 
 export { CreateGameArray }

@@ -6,8 +6,8 @@ const GameBoard =({ array }) => {
     <div className="board">
       {array.map((row, i) => (
         <div key={i}>
-          {row.map((column, i) => (
-            <Square key={i} img={column}/>
+          {row.map((column, j) => (
+            <Square key={j} img={column}/>
           ))}
         </div>
       ))}

@@ -8,14 +8,13 @@ function App() {
 
   const [gameBoardNumber, setGameBoardNumber]  = useState([])
 
-    function addComponent(){
-      setGameBoardNumber([...gameBoardNumber, gameBoardNumber.length + 1])
-     
+    function addGameBoardnumber(){
+      setGameBoardNumber([...gameBoardNumber, gameBoardNumber.length + 1])     
     }
 
 return (
   <div className="App">
-    <CreateNewBoard onClick = {addComponent} text = {"Create board"} />
+    <CreateNewBoard onClick = {addGameBoardnumber} text = {"Create board"} />
     {gameBoardNumber.map((item)=>{return <GameArea key = {item}/>})}
   </div>
 )
