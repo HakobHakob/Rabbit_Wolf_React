@@ -14,12 +14,8 @@ const options = [
   { value: 10, label: '10 x 10' },
 ]
 
-const directions = {
-  UP: 0,
-  DOWN: 1,
-  RIGHT: 2,
-  LEFT: 3,
-}
+const directions = [0, 1, 2, 3]
+
 const GAMEBOARD_DEFAULT_SIZE = 5
 
 const GameArea = () => {
@@ -60,30 +56,19 @@ const GameArea = () => {
         <StartBtn onClick={gameStartClick} />
 
         {isActiveButtons ? (
-          <div className="arrowsDiv">
-            <ArrowButtons
-              onClick={() => {
-                setRabbitDirections(directions.UP)
-              }}
-            />
-
-            <div className="leftAndRightDiv">
-              <ArrowButtons
-                onClick={() => {
-                  setRabbitDirections(directions.LEFT)
-                }}
-              />
-              <ArrowButtons
-                onClick={() => {
-                  setRabbitDirections(directions.RIGHT)
-                }}
-              />
-            </div>
-            <ArrowButtons
-              onClick={() => {
-                setRabbitDirections(directions.DOWN)
-              }}
-            />
+          <div className='buttonsDiv'>
+            {directions.map((direction, index) => {
+              return (
+                <ArrowButtons
+               
+                  key={index}
+                  direction={direction}
+                  onClick={() => {
+                    setRabbitDirections(direction)
+                  }}
+                />
+              )
+            })}
           </div>
         ) : null}
 

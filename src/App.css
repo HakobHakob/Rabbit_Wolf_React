@@ -19,30 +19,30 @@
 }
 .arrowsDiv {
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.leftAndRightDiv {
-  width: 100px;
+.buttonsDiv{
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
+
+
 .arrowsDiv button {
   cursor: pointer;
   margin: 5px auto;
-  padding: 3px 13px;
+  padding: 7px 13px;
   outline: none;
   border: none;
   border-radius: 10px;
+  background-color: #31b5e7;
+  color: white;
+  font-size: 17px;
 }
-.leftAndRightDiv button {
-  padding: 5px auto;
-}
+
 
 .emptyCells {
   display: inline-block;
