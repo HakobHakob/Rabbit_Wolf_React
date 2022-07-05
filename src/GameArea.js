@@ -25,13 +25,12 @@ const GameArea = () => {
     isGameOver: false,
     gameResult: '',
   })
+  const gameArray = gameState.gameGrid
+  const isGameInProcess = gameState.isGameOver === false && gameArray.length > 0
 
   const changeSelectValue = (e) => {
     setBoardSize(parseInt(e.target.value))
   }
-
-  const gameArray = gameState.gameGrid
-  const isGameInProcess = gameState.isGameOver === false && gameArray.length > 0
 
   const gameStartClick = () => {
     setgameState({
