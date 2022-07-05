@@ -1,8 +1,8 @@
 import React from 'react'
 
-const StartBtn = (props) => {
+const StartBtn = ({onClick}) => {
   return (
-    <button className="startBtn" onClick={props.onClick}>
+    <button className="startBtn" onClick={onClick}>
       Start
     </button>
   )

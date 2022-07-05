@@ -15,7 +15,6 @@ const options = [
 ]
 
 const directions = [0, 1, 2, 3]
-
 const GAMEBOARD_DEFAULT_SIZE = 5
 
 const GameArea = () => {

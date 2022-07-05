@@ -8,10 +8,10 @@ const ArrowButtons = ({ onClick, index, direction }) => {
       </div>
     )
   }
-  if (direction === 3) {
+  if (direction === 1) {
     return (
       <div className="arrowsDiv" key={index}>
-        <button onClick={onClick}>&#8678;</button>
+        <button onClick={onClick}>&#8681;</button>
       </div>
     )
   }
@@ -22,13 +22,15 @@ const ArrowButtons = ({ onClick, index, direction }) => {
       </div>
     )
   }
-  if (direction === 1) {
+  if (direction === 3) {
     return (
       <div className="arrowsDiv" key={index}>
-        <button onClick={onClick}>&#8681;</button>
+        <button onClick={onClick}>&#8678;</button>
       </div>
     )
   }
+ 
+  
   
   
 }
