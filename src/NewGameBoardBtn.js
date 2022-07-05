@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
-const CreateNewBoard = ({onClick,text}) =>{
-
-return (
-    <button className="AddNewBoardBtn" onClick ={onClick}> {text}</button>
-)
-
+const CreateNewBoard = ({ onClick }) => {
+  return (
+    <button className="AddNewBoardBtn" onClick={onClick}>
+      Create New Board
+    </button>
+  )
 }
-export {CreateNewBoard}
+export { CreateNewBoard }

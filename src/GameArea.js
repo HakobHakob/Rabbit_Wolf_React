@@ -20,33 +20,33 @@ const GAMEBOARD_DEFAULT_SIZE = 5
 const GameArea = () => {
   const [boardSize, setBoardSize] = useState(GAMEBOARD_DEFAULT_SIZE)
 
-  const [gameStat, setGameStat] = useState({
+  const [gameState, setgameState] = useState({
     gameGrid: [],
     isGameOver: false,
     gameResult: '',
   })
 
   const changeSelectValue = (e) => {
-    setBoardSize(+e.target.value)
+    setBoardSize(parseInt(e.target.value))
   }
 
-  const [isActiveButtons, setIsActiveButtons] = useState(false)
+  const gameArray = gameState.gameGrid
+  const isGameInProcess = gameState.isGameOver === false && gameArray.length > 0
 
   const gameStartClick = () => {
-    setGameStat({
+    setgameState({
       gameGrid: CreateGameArray(boardSize),
       isGameOver: false,
       gameResult: '',
     })
-    setIsActiveButtons(true)
   }
 
   const setRabbitDirections = (directions) => {
-    if (gameStat.isGameOver === true) {
+    if (gameState.isGameOver === true) {
       return
     }
-    const charactersMovement = MoveCharacters(gameStat, directions)
-    setGameStat(charactersMovement)
+    const charactersMovement = MoveCharacters(gameState, directions)
+    setgameState(charactersMovement)
   }
 
   return (
@@ -54,14 +54,13 @@ const GameArea = () => {
       <div className="optionsDiv">
         <StartBtn onClick={gameStartClick} />
 
-        {isActiveButtons ? (
-          <div className='buttonsDiv'>
+        {isGameInProcess ? (
+          <div className="buttonsDiv">
             {directions.map((direction, index) => {
               return (
                 <ArrowButtons
-               
                   key={index}
-                  direction={direction}
+                  className={'button' + direction}
                   onClick={() => {
                     setRabbitDirections(direction)
                   }}
@@ -74,11 +73,11 @@ const GameArea = () => {
         <CustomSelect options={options} onChange={changeSelectValue} />
       </div>
 
-      {gameStat.isGameOver === true ? (
-        <ShowMessage message={gameStat.gameResult} />
+      {gameState.isGameOver === true ? (
+        <ShowMessage message={gameState.gameResult} />
       ) : (
         <div className="gameBoardDiv">
-          {<GameBoard array={gameStat.gameGrid} />}
+          {<GameBoard array={gameState.gameGrid} />}
         </div>
       )}
     </div>

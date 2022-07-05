@@ -81,17 +81,22 @@ function setRabbitInNewCell(gameStatObject, arrow) {
   const gamePlaceArr = gameStatObject.gameGrid
   const rabbitCord = findCordOfCharacter(gamePlaceArr, RABBIT)[0]
   const newCoordsData = rabbitCoordinatesForNewCell(rabbitCord)
-  const rabbitNewCoordinates = arrangeNewCoordinates(gamePlaceArr, newCoordsData)
+  const rabbitNewCoordinates = arrangeNewCoordinates(
+    gamePlaceArr,
+    newCoordsData
+  )
 
-  const rabbitInNewCoordinates = setRabbitInNewCoordinates(gameStatObject,rabbitNewCoordinates,rabbitCord,arrow)
+  const rabbitInNewCoordinates = setRabbitInNewCoordinates(
+    gameStatObject,
+    rabbitNewCoordinates,
+    rabbitCord,
+    arrow
+  )
   return rabbitInNewCoordinates
 }
 
-
-
 const RabbitMove = (gameStat, rabbitDirection) => {
-  
-  let gameStatObject = { ...gameStat }
+  const gameStatObject = { ...gameStat }
 
   return setRabbitInNewCell(gameStatObject, rabbitDirection)
 }
