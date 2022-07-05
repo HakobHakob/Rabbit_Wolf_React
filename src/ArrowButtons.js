@@ -1,11 +1,5 @@
 import React from 'react'
 
-// const directionClassname = ['UP', 'DOWN', 'RIGHT', 'LEFT']
-// directionClassname.map((item) => {
-
-//   console.log(item)
-//   })
-
 const ArrowButtons = ({ onClick, index, direction }) => {
   if (direction === 0) {
     return (
@@ -21,13 +15,6 @@ const ArrowButtons = ({ onClick, index, direction }) => {
       </div>
     )
   }
-  if (direction === 1) {
-    return (
-      <div className="arrowsDiv" key={index}>
-        <button onClick={onClick}>&#8681;</button>
-      </div>
-    )
-  }
   if (direction === 2) {
     return (
       <div className="arrowsDiv" key={index}>
@@ -35,6 +22,14 @@ const ArrowButtons = ({ onClick, index, direction }) => {
       </div>
     )
   }
+  if (direction === 1) {
+    return (
+      <div className="arrowsDiv" key={index}>
+        <button onClick={onClick}>&#8681;</button>
+      </div>
+    )
+  }
+  
   
 }
 
