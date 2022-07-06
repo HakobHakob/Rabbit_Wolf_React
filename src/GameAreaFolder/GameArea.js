@@ -1,12 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
-import { ArrowButtons } from './ArrowButtons'
+import { ArrowButtons } from '../ArrowButtons/ArrowButtons'
+
+import { ButtonsDiv } from './ButtonsDiv'
+
 import { CreateGameArray } from './CreateEmptyMass'
-import { CustomSelect } from './CustomSelect'
-import { GameBoard } from './RendGameBoard'
-import { StartBtn } from './StartBtn'
-import { ShowMessage } from './ShowMessage'
+import { CustomSelect } from '../GameSelect/CustomSelect'
+import { StartBtn } from '../StartBtnFolder/StartBtn'
+import { ShowMessage } from '../ShowMessage/ShowMessage'
 import { MoveCharacters } from './MoveCharacters'
+import { GameBoard } from '../RendGameBoard/RendGameBoard'
+import { RendGameBoardDiv } from '../RendGameBoard/RendGameBoardStyle'
+import { OptionsDivStyle } from './OptionsDivStyle'
 
 const options = [
   { value: 5, label: '5 x 5' },
@@ -49,37 +54,35 @@ const GameArea = () => {
   }
 
   return (
-    <div className="board">
-      <div className="optionsDiv">
+    <RendGameBoardDiv>
+      <OptionsDivStyle>
         <StartBtn onClick={gameStartClick} />
 
         {isGameInProcess ? (
-          <div className="buttonsDiv">
+          <ButtonsDiv>
             {directions.map((direction, index) => {
               return (
                 <ArrowButtons
                   key={index}
-                  className={'button' + direction}
+                  direction={direction}
                   onClick={() => {
                     setRabbitDirections(direction)
                   }}
                 />
               )
             })}
-          </div>
+          </ButtonsDiv>
         ) : null}
 
         <CustomSelect options={options} onChange={changeSelectValue} />
-      </div>
+      </OptionsDivStyle>
 
       {gameState.isGameOver === true ? (
         <ShowMessage message={gameState.gameResult} />
       ) : (
-        <div className="gameBoardDiv">
-          {<GameBoard array={gameState.gameGrid} />}
-        </div>
+        <div>{<GameBoard array={gameState.gameGrid} />}</div>
       )}
-    </div>
+    </RendGameBoardDiv>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css'
+import { SquareStyle } from './SquareStyle'
 
 const Square = ({ img }) => {
   const characterDatas = {
@@ -8,11 +8,14 @@ const Square = ({ img }) => {
     home: { name: 'h', src: '../img/home.png', count: 1 },
     fence: { name: 'f', src: '../img/fence.png' },
   }
+
   const characterImg = img
   let imgSrc
+
   if (characterImg === 0) {
-    return <div className="emptyCells"></div>
+    return <SquareStyle />
   }
+
   if (characterImg === characterDatas.rabbit.name) {
     imgSrc = characterDatas.rabbit.src
   }
@@ -27,9 +30,9 @@ const Square = ({ img }) => {
   }
 
   return (
-    <div className="emptyCells">
+    <SquareStyle>
       <img src={imgSrc} alt="#" />
-    </div>
+    </SquareStyle>
   )
 }
 

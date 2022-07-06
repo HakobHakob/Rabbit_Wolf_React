@@ -1,7 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
-import { GameArea } from './GameArea'
-import { CreateNewBoard } from './NewGameBoardBtn'
+
+
+import { AppStyles } from './AppStyle'
+
+import { GameArea } from '../GameAreaFolder/GameArea'
+
+
+import { CreateNewBoard } from '../CreateNewBoard/NewGameBoardBtn'
 
 function App() {
   const [gameBoardNumber, setGameBoardNumber] = useState([])
@@ -11,12 +17,12 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <AppStyles>
       <CreateNewBoard onClick={addGameBoardnumber} />
       {gameBoardNumber.map((item) => {
         return <GameArea key={item} />
       })}
-    </div>
+    </AppStyles>
   )
 }
 export default App
