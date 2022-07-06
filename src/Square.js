@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 
-const Square = ({img}) => {
+const Square = ({ img }) => {
   const characterDatas = {
     rabbit: { name: 'r', src: '../img/nap.png', count: 1 },
     wolf: { name: 'w', src: '../img/wolf.png' },
@@ -9,21 +9,28 @@ const Square = ({img}) => {
     fence: { name: 'f', src: '../img/fence.png' },
   }
   const characterImg = img
-
+  let imgSrc
+  if (characterImg === 0) {
+    return <div className="emptyCells"></div>
+  }
   if (characterImg === characterDatas.rabbit.name) {
-    return <img src={characterDatas.rabbit.src} alt="Rabbit" />
+    imgSrc = characterDatas.rabbit.src
   }
   if (characterImg === characterDatas.wolf.name) {
-    return <img src={characterDatas.wolf.src} alt="Wolf" />
+    imgSrc = characterDatas.wolf.src
   }
   if (characterImg === characterDatas.fence.name) {
-    return <img src={characterDatas.fence.src} alt="Fence" />
+    imgSrc = characterDatas.fence.src
   }
   if (characterImg === characterDatas.home.name) {
-    return <img src={characterDatas.home.src} alt="Home" />
+    imgSrc = characterDatas.home.src
   }
 
-  return <div className="emptyCells"></div>
+  return (
+    <div className="emptyCells">
+      <img src={imgSrc} alt="#" />
+    </div>
+  )
 }
 
 export { Square }
